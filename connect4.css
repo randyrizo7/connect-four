@@ -1,0 +1,98 @@
+body {
+  background: rgb(22,16,16);
+background: linear-gradient(90deg, rgba(22,16,16,1) 0%, rgba(112,100,177,1) 100%, rgba(252,176,69,1) 100%);
+width: 99vw;
+height: 99vh;
+}
+
+h1 {
+  text-align: center;
+  font-size: 7rem;
+  font-family: 'Lexend Giga', sans-serif;
+  margin-top: 1em;
+  background-image: linear-gradient( 135deg, #F6D242 10%, #FF52E5 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200%;
+  animation: backgroundsize 1s ease infinite alternate-reverse;
+}
+
+@keyframes backgroundsize {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* game board table */
+#game {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5em;
+  
+}
+
+#board td {
+  width: 5rem;
+  height: 5rem;
+  border: solid 5px black;
+  background-color: black;
+  border-radius: 50%;
+  
+  
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.chip {
+  /* TODO: make into circles */
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  border-radius: 100%;
+}
+
+.chip.p1{
+  background-image: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
+  background-size: 200%;
+  animation: backgroundsize 1s ease infinite alternate, 
+  drop .5s ease-in ;
+}
+
+.chip.p2 {
+  background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
+  background-size: 200%;
+  animation: backgroundsize 1s ease infinite alternate, 
+  drop .5s ease-in ;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-20rem);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-3rem);
+  }
+  100% {
+    transform: translateY(0em);
+  }
+}
+
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  background-color: blanchedalmond;
+  border: solid 1px lightgray;
+}
+
+#column-top td:hover {
+  background-color: rgb(117, 123, 216);
+}
