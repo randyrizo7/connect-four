@@ -59,7 +59,18 @@ function makeHtmlBoard() {
       row.append(cell);
     }
     board.append(row);
+    document.querySelector('#column-top').addEventListener('mouseover', hoverColumnTop)
   }
+}
+
+
+function hoverColumnTop(e) {
+  currPlayer === 1 ? e.target.style.backgroundColor = 'crimson': e.target.style.backgroundColor = 'deepskyblue'
+  e.target.addEventListener('mouseleave',function () {
+    e.target.style.backgroundColor = 'blanchedalmond';
+  })
+  console.log(e.target.children)
+  // document.querySelector('#column-top td')
 }
 
 /** findSpotForCol: given column x, return top empty y (null if filled) 
@@ -93,10 +104,10 @@ function placeInTable(y, x) {
 }
 
 /** endGame: announce game end */
-
 function endGame(msg) {
   // TODO: pop up alert message
-  alert(msg);
+  setTimeout(() => alert(msg), 375);
+  //alert(msg); ^^ this will ensure that the chip is dropped prior to the alert showing up. 
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -117,7 +128,7 @@ function handleClick(evt) {
   placeInTable(y, x);
 
   // check for win
-  if (checkForWin()) {
+if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
   }
 
@@ -136,6 +147,8 @@ if (board.every(row => row.every(val => val))) {
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = currPlayer === 1 ? 2 : 1;
 }
+
+
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
@@ -173,5 +186,6 @@ function checkForWin() {
   }
 }
 
+setTimeout(checkForWin, 1000);
 makeBoard();
 makeHtmlBoard();
